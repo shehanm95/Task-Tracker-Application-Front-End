@@ -1,0 +1,27 @@
+<div
+    class="EditTask addNewTask h-100 fullTask flex-grow-1 bg-primary p-2 borderMargin gap-2 d-flex flex-column  fw-bold">
+    <h4 class="text-center m-4">Edit Task</h4>
+    <form class="w-75 mx-auto">
+        <label for="taskTopic">Task Topic</label>
+        <input id="taskTopic" id="taskTopic" type="text" class="form-control text fw-bold mb-3"
+            placeholder="Add Task Name">
+
+        <label for="category">Task Category</label>
+        <select name="category" class="form-control mb-3" id="category">
+            <option value=""></option>
+            <option value="1">Home Task</option>
+            <option value="2">Garden Task</option>
+            <option class="bg-light" title="you can add a new category here" value="2">Add New Category
+            </option>
+        </select>
+        <label for="taskDescript">Task Description</label>
+        <textarea name="taskDescript" id="taskDescript" class="form-control text fw-bold mb-3" rows="6"
+            placeholder="Add Task Description"></textarea>
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate" value="Start Date" class="form-control text fw-bold mb-3">
+        <label for="startDate">Due Date</label>
+        <input type="date" id="startDate" name="startDate" value="Start Date" class="form-control text fw-bold mb-3">
+        <button type="submit" class="float-end btn-primary  defaultButton" style="width: 100px;">Submit</button>
+    </form>
+
+</div>

@@ -1,0 +1,6 @@
+<div *ngIf="show" class="msg" [ngClass]="{
+    'error' : typeError,
+    'success' : !typeError
+}">
+    <p>{{notificationMessage}}</p>
+</div>

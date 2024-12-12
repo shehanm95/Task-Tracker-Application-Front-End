@@ -1,0 +1,77 @@
+<div *ngIf="task"
+    class="h-100 w-100 fullTask flex-grow-1 bg-primary p-2 borderMargin gap-2 d-flex flex-column text-dark-green-primary fw-bold">
+
+    <!-- Main Task and Description -->
+    <div class="MainTask borderMargin bg-light p-2">
+        <div class="h2">
+            {{task.topic}}
+        </div>
+        <div class="taskDescript p">{{task.description}}</div>
+    </div>
+
+    <!-- Sub task List -->
+    <div class="subTaskArea borderMargin bg-light overflow-hidden flex-grow-1">
+
+        <div class="overflow-y-auto subTaskList">
+            <div *ngFor="let subTask of task.subTaskDtoList"
+                class="subTask taskItem d-flex align-items-center borderMargin m-1 p-1">
+                <input type="checkbox" name="task" [checked]="subTask.isFinished"
+                    (change)="toggleSubTaskFinishedState($event, subTask)" style="transform: scale(1.3);"
+                    class="mx-2 myCheckbox" id="{{subTask.id}}">
+                <div class="labelWrap p-0 fw-bold m-0 taskText text-dark flex-grow-1">
+                    <label for="{{subTask.id}}">
+                        {{subTask.subTaskName}}</label>
+                </div>
+
+
+                <a (click)="editSubTask(subTask)">
+                    <div class="dltIconButton buttonHover ms-2"><i class="bi bi-pencil-square text-dark"></i>
+                    </div>
+                </a>
+                <div (click)="deleteSubTask(subTask.id, subTask.subTaskName)" class="dltIconButton buttonHover ms-2"><i
+                        class="bi bi-trash3-fill text-dark"></i>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- add sub task -->
+    <div class="addSubTask borderMargin d-flex bg-light p-1">
+        <form #f="ngForm" (submit)="addSubTask(f)" class="w-100 d-flex">
+            <input type="text" ngModel name="subTaskName" required id="subTaskName" class="flex-grow-1 borderMargin">
+            <button type="submit" class="addSubTaskButton buttonHover ms-2">Add Sub Task</button>
+        </form>
+    </div>
+
+
+    <!-- task summery -->
+    <div class="taskSummary borderMargin d-flex p-2 justify-content-between">
+        <div class="summerySlot borderMargin p-2 center flex-column">
+            <div>
+                <p class="dateDesc ">Start date </p>
+                <p>: {{task.startingDate}}</p>
+            </div>
+            <div>
+                <p class="dateDesc">Due Date </p>
+                <p>: {{task.dueDate}}</p>
+            </div>
+        </div>
+        <div class="summerySlot borderMargin p-2">
+            <div class="h2 text-center">{{task.finishingRate |number:'2.2-2' }}%</div>
+            <p>COMPLETED</p>
+        </div>
+        <div (click)="markFullTaskAsFinished(task.id)" class="lightButton borderMargin p-2 center flex-column">
+            <p class="m-0 m-0">MARK THIS FULL TASK AS</p>
+            <div class="h2 text-center m-0 p-0"> COMPLETED</div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf="!task"
+    class="h-100 w-100 fullTask flex-grow-1 bg-primary p-2 borderMargin gap-2 d-flex flex-column text-dark-green-primary fw-bold">
+    <p class="bg-black">current task not set</p>
+
+</div>

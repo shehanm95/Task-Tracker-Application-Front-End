@@ -1,0 +1,17 @@
+<!-- delete warning -->
+<div *ngIf="showWarning" class="warning">
+    <div class="dialog-box">
+        <div class="content">
+            <div class="warning-icon d-inline-block">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+            <div class="msgArea">
+                <p>{{warningMessage}}</p>
+                <div class="buttons">
+                    <button (click)="onPositive()" class="delete-btn">{{buttonText}}</button>
+                    <button (click)="toggleWarning()" class="cancel-btn">cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

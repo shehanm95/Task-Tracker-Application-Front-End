@@ -1,0 +1,19 @@
+<div
+    class="h-100 EditSubtask addNewTask fullTask flex-grow-1 bg-primary p-2 borderMargin gap-2 d-flex flex-column  fw-bold">
+    <h4 class="text-center m-4">Edit Sub Task</h4>
+    <form #f="ngForm" (submit)="editSubtask(f)" class="w-75 mx-auto">
+        <label for="subTaskName">New sub Task Name</label>
+        <input id="subTaskName" name="subTaskName" required [(ngModel)]="subTask.subTaskName" id="subTaskName"
+            type="text" class="form-control text fw-bold mb-3" placeholder="You must add the sub task name">
+
+
+        <button type="button" (click)="goBack()" class="float-end btn-primary  defaultButton mb-5"
+            style="width: 100px;">cancel</button>
+        <button type="submit" class="float-end btn-primary  defaultButton mb-5" style="width: 100px;">Add</button>
+
+
+    </form>
+
+
+
+</div>
