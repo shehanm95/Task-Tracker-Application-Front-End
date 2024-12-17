@@ -1,3 +1,22 @@
 .subTaskList {
     max-height: 50vh;
 }
+
+.taskEditButton {
+    right: 0.8rem;
+    bottom: 0.2rem;
+    opacity: 0.1;
+
+}
+
+.taskEditButton .dltIconButton {
+    background-color: var(--bg-secondary);
+}
+
+.taskEditButton .dltIconButton i {
+    color: var(--bg-light) !important;
+}
+
+.taskEditButton:hover {
+    opacity: 1;
+}

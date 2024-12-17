@@ -9,6 +9,7 @@ import { EditCategoryListComponent } from "./features/category/component/edit-ca
 import { TaskFilterAndListComponent } from "./features/task/component/task-filter-and-list/task-filter-and-list.component";
 import { WarningComponent } from "./features/common/warning/warning.component";
 import { NotificationComponent } from "./features/common/notification/notification.component";
+import { UiService } from './core/services/ui.service';
 
 @Component({
   selector: 'app-root',
@@ -19,4 +20,9 @@ import { NotificationComponent } from "./features/common/notification/notificati
 })
 export class AppComponent {
   title = 'taskTrackerFrontEnd';
+  constructor(private uiService: UiService) { }
+
+  showSideBar() {
+    this.uiService.toggleSideBar()
+  }
 }

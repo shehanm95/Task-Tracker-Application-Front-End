@@ -226,6 +226,9 @@ body {
     color: var(--bg-primary);
 }
 
+form .ng-dirty.ng-invalid.ng-touched {
+    border: red solid 2px !important;
+}
 
 .error {
     background-color: var(--error-back-color);
@@ -420,4 +423,54 @@ button {
 
 .check {
     border: 1px solid red !important;
+}
+
+.hideOnDesktop {
+    display: none;
+}
+
+
+@media (max-width: 930px) {
+    .hideOnDesktop {
+        display: inline-block;
+    }
+
+    .centerMain {
+        height: 100% !important;
+    }
+
+    #sideBar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+    }
+
+    #SideBarAndFullTask {
+        gap: 0 !important;
+        padding: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    #fullTask {
+        gap: 0 !important;
+        padding: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    .showSideBar {
+
+        animation: showSideBarNormal 1s forwards;
+    }
+
+    @keyframes showSideBarNormal {
+        0% {
+            left: -100;
+        }
+
+        100% {
+            left: 0;
+        }
+    }
 }

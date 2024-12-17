@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NotificationService } from '../../../../core/services/notification.service';
 import { CategoryService } from '../../service/category.service';
 import { NotificationType } from '../../../../core/enums/notification-type';
@@ -11,7 +11,7 @@ import { LocalStorageService } from '../../../../core/services/local-storage.ser
 @Component({
   selector: 'app-add-category',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css'
 })

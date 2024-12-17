@@ -2,11 +2,15 @@
     class="h-100 w-100 fullTask flex-grow-1 bg-primary p-2 borderMargin gap-2 d-flex flex-column text-dark-green-primary fw-bold">
 
     <!-- Main Task and Description -->
-    <div class="MainTask borderMargin bg-light p-2">
+    <div class="MainTask borderMargin bg-light p-2 position-relative">
         <div class="h2">
-            {{task.topic}}
+            {{task.topic | titlecase}}
         </div>
-        <div class="taskDescript p">{{task.description}}</div>
+        <div class="taskDescript p">{{task.description | titlecase}}</div>
+        <a class="position-absolute taskEditButton" (click)="goToEditTask()">
+            <div class="dltIconButton buttonHover ms-2"><i class="bi bi-pencil-square text-dark"></i>
+            </div>
+        </a>
     </div>
 
     <!-- Sub task List -->
@@ -20,7 +24,7 @@
                     class="mx-2 myCheckbox" id="{{subTask.id}}">
                 <div class="labelWrap p-0 fw-bold m-0 taskText text-dark flex-grow-1">
                     <label for="{{subTask.id}}">
-                        {{subTask.subTaskName}}</label>
+                        {{subTask.subTaskName | titlecase}}</label>
                 </div>
 
 
@@ -48,14 +52,14 @@
 
     <!-- task summery -->
     <div class="taskSummary borderMargin d-flex p-2 justify-content-between">
-        <div class="summerySlot borderMargin p-2 center flex-column">
+        <div class="summerySlot borderMargin p-2 d-flex align-items-start justify-content-center flex-column">
             <div>
                 <p class="dateDesc ">Start date </p>
-                <p>: {{task.startingDate}}</p>
+                <p>: {{task.startingDate | titlecase}}</p>
             </div>
             <div>
-                <p class="dateDesc">Due Date </p>
-                <p>: {{task.dueDate}}</p>
+                <p class="dateDesc" style="text-align: left !important;">Due Date </p>
+                <p>: {{task.dueDate | titlecase}}</p>
             </div>
         </div>
         <div class="summerySlot borderMargin p-2">
@@ -71,7 +75,11 @@
 </div>
 
 <div *ngIf="!task"
-    class="h-100 w-100 fullTask flex-grow-1 bg-primary p-2 borderMargin gap-2 d-flex flex-column text-dark-green-primary fw-bold">
-    <p class="bg-black">current task not set</p>
+    class="h-100 w-100 fullTask flex-grow-1 bg-primary p-2 borderMargin gap-2 d-flex flex-column justify-content-center align-items-center text-dark-green-primary fw-bold">
+    <h2 class="h2 text-center text-light mb-2"> WELCOME TO TASK TRACKER APPLICATION</h2>
+    <div class="bg-secondary borderMargin p-5">
+        <div class="h2 text-center text-light">You Don't have Tasks To show</div>
+        <div (click)="goToAddTask()" class="bg-light p-2 text-center m-2 borderMargin">ADD NEW TASK</div>
+    </div>
 
 </div>

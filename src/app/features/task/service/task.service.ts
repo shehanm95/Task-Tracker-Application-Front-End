@@ -5,17 +5,20 @@ import { MainBackEndUrl } from '../../../core/environment/environment.service';
 import { ITask } from '../../../core/models/itask';
 import { TaskFilterAndListComponent } from '../component/task-filter-and-list/task-filter-and-list.component';
 import { Router } from '@angular/router';
+import { IFilterObj } from '../../../core/models/ifilter-obj';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-
   private _currentTask!: ITask;
-
 
   refreshSideBar() {
     this.sideBarTaskList.refresh()
+  }
+
+  refreshCategories() {
+    this.sideBarTaskList.refreshCategories();
   }
 
   url: string = MainBackEndUrl + "/task"
@@ -34,6 +37,9 @@ export class TaskService {
     return this.http.get<ITask[]>(`${this.url}/all`);
   }
 
+  fetchOnFilterObj(filterObj: IFilterObj): Observable<ITask[]> {
+    return this.http.post<ITask[]>(`${this.url}/onFilter`, filterObj);
+  }
   // Add a new task
   addTask(ITask: any): Observable<ITask> {
     return this.http.post<ITask>(`${this.url}/add`, ITask);
@@ -69,6 +75,10 @@ export class TaskService {
   viewCurrentTask() {
     if (this._currentTask) {
       this.router.navigate(["/task/view/" + this._currentTask.id]);
+    }
+    else {
+      this.router.navigate(["/task/view"]);
+      console.log("no tasks to show")
     }
 
   }

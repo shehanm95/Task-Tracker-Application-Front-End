@@ -16,7 +16,7 @@ export class LocalStorageService {
   getDraftTask(): IDraftTask {
     let tempDraft: IDraftTask = {
       topic: "",
-      categoryId: 0,
+      categoryId: -2,
       description: "",
       startingDate: "",
       dueDate: ""

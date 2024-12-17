@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TaskService } from '../../service/task.service';
 import { ITask } from '../../../../core/models/itask';
-import { CommonModule } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { ISubTask } from '../../../../core/models/isub-task';
 import { OnWarning } from '../../../common/on-warning';
 import { WarningService } from '../../../../core/services/warning.service';
@@ -16,7 +16,7 @@ import { elementAt } from 'rxjs';
 @Component({
   selector: 'app-view-full-task',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TitleCasePipe],
   templateUrl: './view-full-task.component.html',
   styleUrl: './view-full-task.component.css'
 })
@@ -94,6 +94,7 @@ export class ViewFullTaskComponent extends OnWarning implements OnInit {
       next: (finishedTask: ITask) => {
         this.task = finishedTask;
         this.notificationService.showNotification(NotificationType.SUCCESS, "This Task marked as Finished...!")
+        this.taskService.refreshSideBar()
       },
       error: (error: HttpErrorResponse) => {
         console.error("Error setting task as finished : " + error);
@@ -152,6 +153,12 @@ export class ViewFullTaskComponent extends OnWarning implements OnInit {
     this.route.navigate(['/subTask/edit/' + subTask.id])
   }
 
+  goToAddTask() {
+    this.route.navigate(['/task/add'])
+  }
 
+  goToEditTask() {
+    this.route.navigate(['/task/edit/' + this.taskService.getCurrentTask().id])
+  }
 }
 

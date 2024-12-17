@@ -27,7 +27,7 @@ export class NotificationComponent {
     this.show = true;
     setTimeout(() => {
       this.show = false;
-    }, 2000);
+    }, 3000);
   }
 
 }

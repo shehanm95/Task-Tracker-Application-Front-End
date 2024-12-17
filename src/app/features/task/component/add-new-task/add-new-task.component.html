@@ -1,26 +1,28 @@
 <div class=" addNewTask h-100 w-100 fullTask flex-grow-1 bg-primary p-2 borderMargin gap-2 d-flex flex-column  fw-bold">
     <h4 class="text-center m-4">Add New Task</h4>
     <form #f="ngForm" (submit)="addTask(f)" class="w-75 mx-auto">
-        <label for="taskTopic">Task Topic</label>
-        <input id="topic" name="topic" [(ngModel)]="taskDraft.topic" type="text" class="form-control text fw-bold mb-3"
-            placeholder="Add Task Name">
-
-        <label for="category">Task Category</label>
-        <select id="categoryId" name="categoryId" [(ngModel)]="taskDraft.categoryId" (change)="toggleToAddCategory()"
-            class="form-control mb-3">
-            <option value=""></option>
+        <label for="topic">Task Topic</label>
+        <input id="topic" #topic="ngModel" name="topic" required [(ngModel)]="taskDraft.topic" type="text"
+            class="form-control text fw-bold mb-3" placeholder="Add Task Name">
+        <p *ngIf="topic.invalid && topic.touched" class="text-danger">You must add a topic for the task...</p>
+        <label for="categoryId">Task Category</label>
+        <select id="categoryId" name="categoryId" #categoryId="ngModel" [(ngModel)]="taskDraft.categoryId"
+            (change)="toggleToAddCategory($event)" class="form-control mb-3">
+            <option value="0"></option>
             <option *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}</option>
 
             <option class="bg-light" title="you can add a new category here" value="-1">Add New Category
             </option>
         </select>
-        <label for="taskDescript">Task Description</label>
+        <p *ngIf="ifCategoryIdZero && categoryId.touched" class="text-danger">You must select a category for the task...
+        </p>
+        <label for="description">Task Description</label>
         <textarea id="description" name="description" [(ngModel)]="taskDraft.description"
             class="form-control text fw-bold mb-3" rows="6" placeholder="Add Task Description"></textarea>
-        <label for="startDate">Start Date</label>
+        <label for="startingDate">Start Date</label>
         <input id="startingDate" name="startingDate" [(ngModel)]="taskDraft.startingDate" type="date"
             class="form-control text fw-bold mb-3">
-        <label for="startDate">Due Date</label>
+        <label for="dueDate">Due Date</label>
         <input id="dueDate" name="dueDate" [(ngModel)]="taskDraft.dueDate" type="date"
             class="form-control text fw-bold mb-3">
         <button type="submit" class="float-end btn-primary  defaultButton" style="width: 100px;">Submit</button>

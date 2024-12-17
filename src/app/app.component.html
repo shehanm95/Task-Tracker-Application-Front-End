@@ -7,20 +7,21 @@
 
 <div class="appNameAndMain">
     <div class="topName mb-1">
+        <i (click)="showSideBar()" class="hideOnDesktop bi bi-list text-light h3 p-2"></i>
         <h5 class="h5 d-inline-block">Spring Task Tracker</h5>
         <div class="nameAndImg d-inline-block float-end">
             <h5 class="h6 d-inline-block me-1">Shehan Maleesha</h5>
-            <img src="./propic.jpg" class="prof-img d-inline-block" alt="propic">
+            <img src="../../propic.PNG" class="prof-img d-inline-block" alt="propic">
         </div>
     </div>
 </div>
 
 <!-- INSIDE THE APP -->
 <div class="tasksAndMsgs bg-light flex-grow-1 d-flex flex-column borderMargin">
-    <div class="SideBarAndFullTask flex-grow-1 d-flex gap-3 p-3 align-items-stretch">
+    <div id="SideBarAndFullTask" class="SideBarAndFullTask flex-grow-1 d-flex gap-3 p-3 align-items-stretch">
 
         <!-- SIDE BAR -->
-        <app-task-filter-and-list></app-task-filter-and-list>
+        <app-task-filter-and-list class="z-1"></app-task-filter-and-list>
 
 
         <!-- @@=========================================================== -->

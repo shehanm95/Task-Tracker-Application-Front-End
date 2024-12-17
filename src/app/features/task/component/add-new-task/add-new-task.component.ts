@@ -22,6 +22,7 @@ export class AddNewTaskComponent {
 
   categoryList!: ICategory[];
   taskDraft!: IDraftTask; // if we added a category white adding a task , that task will be saved as a draft in this,
+  ifCategoryIdZero: boolean = false;
 
 
   constructor(private router: Router,
@@ -38,18 +39,25 @@ export class AddNewTaskComponent {
     this.taskDraft = localStorageService.getDraftTask();
   }
 
-  toggleToAddCategory() {
+  toggleToAddCategory($event: Event) {
+    const categorySelector = $event.target as HTMLInputElement;
     if (this.taskDraft.categoryId == -1) {
       this.localStorageService.setDraftATask(this.taskDraft)
       this.router.navigate(["/category/add"]);
+    }
+    else if (this.taskDraft.categoryId == 0) {
 
+      categorySelector.classList.add('ng-invalid')
+      this.ifCategoryIdZero = true
+    } else {
+      this.ifCategoryIdZero = false;
+      categorySelector.classList.remove('ng-invalid')
     }
   }
 
 
   addTask(form: NgForm) {
     if (form.valid) {
-
       let category = this.categoryList.find(task => task.id = this.taskDraft.categoryId)
       let f = { ...form.value };
       f = {
@@ -60,17 +68,21 @@ export class AddNewTaskComponent {
       this.taskService.addTask(f).subscribe({
         next: (task: ITask) => {
           //this.taskService.sideBarTaskList.taskList.push(task);
-          this.taskService.sideBarTaskList.loadInitialTasks();
+          this.taskService.setCurrentTask(task);
+          this.taskService.sideBarTaskList.refresh()
+          this.taskService.sideBarTaskList.taskList.push(task);
           this.localStorageService.removeDraftTask()
           this.notificationService.showNotification(NotificationType.SUCCESS, "Task added successfully...!")
           form.reset()
         },
         error: (error) => {
-          this.notificationService.showNotification(NotificationType.SUCCESS, "Error Adding Task...!")
+          this.notificationService.showNotification(NotificationType.ERROR, "Error Adding Task...!")
           console.error("Error adding task : " + error)
         }
       })
 
+    } else {
+      this.notificationService.showNotification(NotificationType.ERROR, "Please fill the form correctly...!")
     }
   }
 }
