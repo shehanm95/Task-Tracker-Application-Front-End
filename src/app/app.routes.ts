@@ -7,13 +7,13 @@ import { AddCategoryComponent } from './features/category/component/add-category
 import { EditCategoryListComponent } from './features/category/component/edit-category-list/edit-category-list.component';
 
 export const routes: Routes = [
-    { path: "task/view/:id", component: ViewFullTaskComponent },
-    { path: "task/view", component: ViewFullTaskComponent },
-    { path: "task/edit/:id", component: EditTaskComponent },
-    { path: "task/add", component: AddNewTaskComponent },
-    { path: "subTask/edit/:id", component: EditSubTaskComponent },
-    { path: "category/add", component: AddCategoryComponent },
-    { path: "category/edit", component: EditCategoryListComponent },
+    { path: "task/view/:id", component: ViewFullTaskComponent, title: "Task Tracker : View" },
+    { path: "task/view", component: ViewFullTaskComponent, title: "Task Tracker : View" },
+    { path: "task/edit/:id", component: EditTaskComponent, title: "Task Tracker : Edit" },
+    { path: "task/add", component: AddNewTaskComponent, title: "Task Tracker : Add" },
+    { path: "subTask/edit/:id", component: EditSubTaskComponent, title: "Task Tracker : Edit" },
+    { path: "category/add", component: AddCategoryComponent, title: "Task Tracker : Add" },
+    { path: "category/edit", component: EditCategoryListComponent, title: "Task Tracker : Edit" },
 
 ];
 

@@ -419,6 +419,12 @@ button {
     border: 2px solid var(--text-primary);
 }
 
+.myMinHeight {
+    min-height: 400px;
+}
+
+
+
 
 
 .check {
@@ -464,6 +470,22 @@ button {
         animation: showSideBarNormal 1s forwards;
     }
 
+    .hideSideBar {
+        animation: hideSide 1s forwards;
+    }
+
+    @keyframes hideSide {
+        0% {
+            left: 0;
+        }
+
+        100% {
+            left: -100;
+        }
+    }
+
+
+
     @keyframes showSideBarNormal {
         0% {
             left: -100;
@@ -473,4 +495,6 @@ button {
             left: 0;
         }
     }
+
+
 }

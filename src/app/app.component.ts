@@ -19,10 +19,15 @@ import { UiService } from './core/services/ui.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   title = 'taskTrackerFrontEnd';
   constructor(private uiService: UiService) { }
 
   showSideBar() {
     this.uiService.toggleSideBar()
+  }
+
+  closeSideBar() {
+    this.uiService.closeSideBar()
   }
 }

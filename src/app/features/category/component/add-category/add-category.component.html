@@ -3,7 +3,7 @@
     <h4 class="text-center m-4">Add New Category</h4>
     <form #f="ngForm" (submit)="addCategory(f)" class="w-75 mx-auto">
         <label for="name">Category Name</label>
-        <input id="name" name="name" ngModel type="text" class="form-control text fw-bold mb-3"
+        <input id="name" maxlength="22" name="name" ngModel type="text" class="form-control text fw-bold mb-3"
             placeholder="Add Category Name">
 
 

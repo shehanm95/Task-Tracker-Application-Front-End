@@ -20,3 +20,61 @@
 .taskEditButton:hover {
     opacity: 1;
 }
+
+.taskSummaryMinHeight {
+    min-height: 80px;
+}
+
+.summeryItem {
+    min-width: 160px;
+    /* flex-grow: 1; */
+}
+
+.maxWidth160 {
+    max-width: 160px;
+}
+
+.maxWidth173 {
+    max-width: 220px;
+}
+
+.maxWidth260 {
+    max-width: 260px;
+}
+
+
+.labelWrap {
+    position: relative;
+    /* Ensures child elements are positioned relative to this container */
+    display: block;
+    /* Makes the div block-level for proper dimension control */
+    overflow: hidden;
+    /* Clips content that overflows the container */
+    max-width: 100%;
+    /* Prevents the container from growing too large */
+    white-space: nowrap;
+    /* Prevents text from wrapping to the next line */
+}
+
+.text-truncate-label {
+    position: relative;
+    /* Keeps the label relative to its container */
+    display: inline-block;
+    /* Ensures the label is treated as an inline element within the block */
+    white-space: nowrap;
+    /* Prevents text wrapping */
+    overflow: visible;
+    /* Allows the label text to overflow */
+    text-overflow: ellipsis;
+    /* Optional: Adds ellipsis when text overflows */
+}
+
+.taskSummary {
+    flex-direction: row;
+}
+
+@media (max-width:610px) {
+    .taskSummary {
+        flex-direction: column;
+    }
+}
